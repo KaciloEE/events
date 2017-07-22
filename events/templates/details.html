@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% load static %}
+{% block meta_title %}Home Page{% endblock meta_title %}
+{% block title%}Home page{% endblock title %}
+
+
+{% block content %}
+<div class="row">
+<div class="jumbotron">
+  <div class="row">
+  <div class="col-md-8">
+    <h1>{{ object.event_title }}</h1>
+    <p>{{ object.event_text }}</p>  
+    <p>{{ object.event_date }}</p>  
+  </div>
+  <div class="col-md-4">
+    <img alt="100%x200" src="{{ object.event_photo.url }}" data-holder-rendered="true" style="height: 200px; width: 100%; display: block; border-radius: 10px">
+  </div>  
+</div>
+</div>
+</div>
+<div class="row">
+  <!-- action="/add/{{ object.id }}/" -->
+ <form action="{% url 'events:details' object.id %}"  method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="form-group">
+    <label>ФИО</label>
+    <input type="text" name="bid_fio" class="form-control" placeholder="ФИО">
+  </div>
+  <div class="form-group">
+    <label>Email</label>
+    <input type="email" name="bid_email" class="form-control" placeholder="Email">
+  </div>
+  <div class="form-group">
+    <label>Немного о себе</label>
+    <input type="text" name="bid_about" class="form-control" placeholder="О себе">
+  </div>
+<div class="form-group">
+    <label>Место работы</label>
+    <input type="text" name="bid_job" class="form-control" placeholder="Место работы">
+  </div>
+<div class="form-group">
+    <label>Откуда узнали о нас</label>
+    <input type="text" name="bid_from" class="form-control" placeholder="Откуда узнали о нас">
+  </div>
+  <div class="form-group">
+    <label>Фото</label>
+    <input type="file" name="bid_photo" required >    
+  </div>  
+  <button type="submit" class="btn btn-primary">Подать заявку</button>
+  <p></p>
+  <p></p>
+</form> 
+
+{% endblock content %}

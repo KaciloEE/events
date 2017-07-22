@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title%}Home page{% endblock title %}
+
+
+{% block content %}
+<div class="row">
+{% for items in data %}
+
+  <div class="col-sm-6 col-md-3">
+    <div class="thumbnail">      
+      <img alt="100%x200" data-src="holder.js/100%x200" src="{{ items.event_photo.url }}" data-holder-rendered="true" style="height: 200px; width: 100%; display: block;">
+      <div class="caption">
+        <h3>{{items.event_title}}</h3>
+        <p>{{items.event_text| truncatewords:15}}</p>
+        <p>{{items.event_date}}</p>
+        <p><a href="{% url 'events:details' items.id %}" class="btn btn-primary" role="button">Подать заявку</a></p>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+
+{% endblock content %}

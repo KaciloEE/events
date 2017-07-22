@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% load static %}
+{% block meta_title %}Home Page{% endblock meta_title %}
+{% block title%}Home page{% endblock title %}
+
+
+{% block content %}
+<div> 
+    <table class="table table-bordered table-hover">
+    <thead>
+      <tr>
+        <th>Мероприятие</th>
+        <th>ФИО</th>
+        <th>email</th>
+        <th>немного о себе</th>
+        <th>место работы</th>        
+        <th>прикрепление фото</th>
+        <th>откуда узнали о нас</th>
+        <th>дата подачи заявки</th>
+      </tr>
+    </thead>
+    <tbody>
+  {% for items in data %}
+      <tr>
+        <td>{{items.bid_event.event_title}}
+          <p>{{items.bid_event.event_date}}</p>
+        </td>
+        <td>{{items.bid_fio}}</td>
+        <td>{{items.bid_email}}</td>
+        <td>{{items.bid_about}}</td>
+        <td>{{items.bid_job}}</td>
+        <td><img alt="100%x200" src="{{ items.bid_photo.url }}" data-holder-rendered="true" style="height: 50px; width: 50px; display: block;"></td>
+        <td>{{items.bid_from}}</td>
+        <td>{{items.bid_date}}</td>
+      </tr>      
+    {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+{% endblock content %}
