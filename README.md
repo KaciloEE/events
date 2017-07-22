@@ -10,9 +10,9 @@
     http://localhost:8000
 
  ## 2. Django + ReactJS
-    запустить сервер Django
-    перейти в папку client
-    установить зависимости npm i
+    запустить сервер Django (выполнить все действия из п.1)
+    перейти в папку client (cd client)
+    установить зависимости (npm i)
     npm start
     http://localhost:3000
     
